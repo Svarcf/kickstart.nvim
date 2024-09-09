@@ -31,6 +31,22 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+--keeps cursor in middle when jumping page up and down
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- greatest remap ever, pastes over but keeps buffer
+vim.keymap.set('x', '<leader>p', [["_dP]])
+
+-- replace words on cursor
+vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- next greatest remap ever : asbjornHaland, copies into system clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
