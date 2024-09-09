@@ -88,7 +88,7 @@ require 'kickstart.options'
 
 require 'kickstart.keymaps'
 
-require 'kickstart.lazy.bootstrap'
+require 'kickstart.lazy-bootstrap'
 
 require 'kickstart.lazy-plugins'
 
