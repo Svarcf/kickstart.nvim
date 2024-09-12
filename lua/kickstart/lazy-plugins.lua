@@ -173,6 +173,9 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          fzf = {
+            fuzzy = false,
+          },
         },
       }
 
@@ -428,6 +431,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'prettier',
+        'prettierd',
+        'emmet-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -720,6 +726,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autotag',
   require 'kickstart.plugins.undotree',
   require 'kickstart.plugins.harpoon',
+  require 'kickstart.plugins.typescript-tools',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
