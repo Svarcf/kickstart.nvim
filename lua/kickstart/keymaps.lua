@@ -51,12 +51,12 @@ vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
-vim.keymap.set('n', '<leader>tio', ':TSToolsOrganizeImports<CR>', { desc = '[T]ypescript [I]mports [O]rganize' })
-vim.keymap.set('n', '<leader>tis', ':TSToolsSortImports<CR>', { desc = '[T]ypescript [I]mports [S]ort' })
-vim.keymap.set('n', '<leader>tir', ':TSToolsAddMissingImports<CR>', { desc = '[T]ypescript [I]mports [I]mport' })
-vim.keymap.set('n', '<leader>tir', ':TSToolsRemoveUnusedImports<CR>', { desc = '[T]ypescript [I]mports [R]emove' })
-vim.keymap.set('n', '<leader>tu', ':TSToolsRemoveUnused<CR>', { desc = '[T]ypescript [U]nused' })
-vim.keymap.set('n', '<leader>tf', ':TSToolsFixAll<CR>', { desc = '[T]ypescript [F]ix' })
+vim.keymap.set('n', '<leader>io', ':TSToolsOrganizeImports<CR>', { desc = 'Typescript [I]mports [O]rganize' })
+vim.keymap.set('n', '<leader>is', ':TSToolsSortImports<CR>', { desc = 'Typescript [I]mports [S]ort' })
+vim.keymap.set('n', '<leader>ir', ':TSToolsAddMissingImports<CR>', { desc = 'Typescript [I]mports [I]mport' })
+vim.keymap.set('n', '<leader>ir', ':TSToolsRemoveUnusedImports<CR>', { desc = 'Typescript [I]mports [R]emove' })
+vim.keymap.set('n', '<leader>iu', ':TSToolsRemoveUnused<CR>', { desc = 'Typescript [U]nused' })
+vim.keymap.set('n', '<leader>if', ':TSToolsFixAll<CR>', { desc = 'Typescript [F]ix' })
 
 -- load the session for the current directory
 vim.keymap.set('n', '<leader>qs', function()
