@@ -49,7 +49,7 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- next greatest remap ever : asbjornHaland, copies into system clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndoTree Toggle' })
 
 vim.keymap.set('n', '<leader>io', ':TSToolsOrganizeImports<CR>', { desc = 'Typescript [I]mports [O]rganize' })
 vim.keymap.set('n', '<leader>is', ':TSToolsSortImports<CR>', { desc = 'Typescript [I]mports [S]ort' })
