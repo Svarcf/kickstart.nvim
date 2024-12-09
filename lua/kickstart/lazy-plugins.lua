@@ -709,7 +709,11 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('lualine').setup {}
+      require('lualine').setup {
+        options = {
+          sections = { lualine_c = { { 'filename', path = 1 } } },
+        },
+      }
     end,
   },
   { -- Highlight, edit, and navigate code
@@ -811,6 +815,11 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
+  --
+
+  {
+    'github/copilot.vim',
+  },
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
