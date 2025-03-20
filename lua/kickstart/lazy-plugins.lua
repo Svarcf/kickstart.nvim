@@ -168,6 +168,21 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          path_display = {
+            'truncate',
+          },
+        },
+        pickers = {
+          lsp_references = {
+            trim_text = true,
+            show_line = false,
+          },
+          lsp_definitions = {
+            show_line = false,
+          },
+        },
+
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -829,6 +844,7 @@ require('lazy').setup({
   require 'kickstart.plugins.harpoon',
   require 'kickstart.plugins.typescript-tools',
   require 'kickstart.plugins.noice',
+  require 'kickstart.plugins.lazygit',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

@@ -45,7 +45,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('x', '<leader>p', [["_dP]])
 
 -- replace words on cursor
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>rc', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- next greatest remap ever : asbjornHaland, copies into system clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
@@ -78,6 +78,8 @@ end)
 vim.keymap.set('n', '<leader>qd', function()
   require('persistence').stop()
 end)
+
+vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = 'Lazy Git' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
