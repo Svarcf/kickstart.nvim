@@ -691,46 +691,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'echasnovski/mini.icons',
-    lazy = true,
-    opts = {
-      file = {
-        ['.keep'] = { glyph = '󰊢', hl = 'MiniIconsGrey' },
-        ['devcontainer.json'] = { glyph = '', hl = 'MiniIconsAzure' },
-      },
-      filetype = {
-        dotenv = { glyph = '', hl = 'MiniIconsYellow' },
-      },
-    },
-    init = function()
-      package.preload['nvim-web-devicons'] = function()
-        require('mini.icons').mock_nvim_web_devicons()
-        return package.loaded['nvim-web-devicons']
-      end
-    end,
-  },
-  {
-    'echasnovski/mini.ai',
-    event = 'VeryLazy',
-    opts = function()
-      local ai = require 'mini.ai'
-      return {
-        n_lines = 500,
-      }
-    end,
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          sections = { lualine_c = { { 'filename', path = 1 } } },
-        },
-      }
-    end,
-  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -793,33 +753,6 @@ require('lazy').setup({
       },
     },
   },
-  {
-    'folke/persistence.nvim',
-    event = 'BufReadPre', -- this will only start session saving when an actual file was opened
-    opts = {
-      -- add any custom options here
-    },
-  },
-  {
-    'f-person/git-blame.nvim',
-    -- load the plugin at startup
-    event = 'VeryLazy',
-    keys = {
-      vim.keymap.set('n', '<leader>gb', ':GitBlameToggle<CR>', { desc = '[G]it [B]lame' }),
-    },
-    -- Because of the keys part, you will be lazy loading this plugin.
-    -- The plugin wil only load once one of the keys is used.
-    -- If you want to load the plugin at startup, add something like event = "VeryLazy",
-    -- or lazy = false. One of both options will work.
-    opts = {
-      -- your configuration comes here
-      -- for example
-      enabled = true, -- if you want to enable the plugin
-      message_template = ' <summary> • <date> • <author> • <<sha>>', -- template for the blame message, check the Message template section for more options
-      date_format = '%m-%d-%Y %H:%M:%S', -- template for the date, check Date format section for more options
-      virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
-    },
-  },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -832,9 +765,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   --
 
-  {
-    'github/copilot.vim',
-  },
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
@@ -846,14 +776,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
-
-  require 'kickstart.plugins.autotag',
-  require 'kickstart.plugins.undotree',
-  require 'kickstart.plugins.harpoon',
-  require 'kickstart.plugins.typescript-tools',
-  require 'kickstart.plugins.noice',
-  require 'kickstart.plugins.lazygit',
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
