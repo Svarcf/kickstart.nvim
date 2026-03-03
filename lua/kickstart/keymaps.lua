@@ -94,3 +94,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- code companion
+vim.keymap.set('n', 'acc', function()
+  require('codecompanion').prompt 'docs'
+end, { noremap = true, silent = true })
