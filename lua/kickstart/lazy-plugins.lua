@@ -645,5 +645,3 @@ require('lazy').setup({
     },
   },
 })
-
-require 'kickstart.plugins.phpactor'
