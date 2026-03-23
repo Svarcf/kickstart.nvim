@@ -5,7 +5,8 @@ return {
     'nvim-lua/plenary.nvim', -- required
 
     -- Only one of these is needed.
-    'esmuellert/codediff.nvim', -- optional
+    -- 'esmuellert/codediff.nvim', -- optional
+    'sindrets/diffview.nvim',
 
     -- Only one of these is needed.
     'nvim-telescope/telescope.nvim', -- optional
@@ -14,7 +15,7 @@ return {
     'folke/snacks.nvim', -- optional
   },
   integrations = {
-    codediff = true,
+    diffview = true,
   },
   cmd = 'Neogit',
   keys = {
