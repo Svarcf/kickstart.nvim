@@ -101,3 +101,5 @@ vim.keymap.set('n', 'acc', function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>sr', ':GrugFar<CR>', { noremap = true, silent = true, desc = '[S]earch [R]eplace' })
+vim.keymap.set('n', '<M-j>', '<cmd>cnext<CR>')
+vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>')
