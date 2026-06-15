@@ -463,6 +463,102 @@ require('lazy').setup({
           end,
         },
       }
+
+      local function configured_client_names(client_names)
+        if #client_names == 0 then
+          return vim
+            .iter(vim.lsp.get_clients())
+            :map(function(client)
+              return client.name
+            end)
+            :filter(function(name)
+              return vim.lsp.config[name] ~= nil
+            end)
+            :totable()
+        end
+
+        return vim
+          .iter(client_names)
+          :filter(function(name)
+            if vim.lsp.config[name] ~= nil then
+              return true
+            end
+
+            if name == 'GitHub Copilot' then
+              vim.notify "GitHub Copilot isn't managed by nvim-lspconfig; use :Copilot restart instead."
+            else
+              vim.notify(("Invalid server name '%s'"):format(name))
+            end
+
+            return false
+          end)
+          :totable()
+      end
+
+      local function complete_configured_clients(arglead)
+        return vim
+          .iter(vim.tbl_keys(vim.lsp.config or {}))
+          :filter(function(name)
+            return vim.startswith(name, arglead)
+          end)
+          :totable()
+      end
+
+      local function recreate_lsp_command(name, callback)
+        pcall(vim.api.nvim_del_user_command, name)
+        vim.api.nvim_create_user_command(name, callback, {
+          nargs = '?',
+          bang = true,
+          complete = complete_configured_clients,
+        })
+      end
+
+      recreate_lsp_command('LspRestart', function(info)
+        local client_names = configured_client_names(info.fargs)
+        if vim.tbl_isempty(client_names) then
+          return
+        end
+
+        for _, name in ipairs(client_names) do
+          vim.lsp.enable(name, false)
+          if info.bang then
+            vim.iter(vim.lsp.get_clients { name = name }):each(function(client)
+              client:stop(true)
+            end)
+          end
+        end
+
+        local timer = assert(vim.uv.new_timer())
+        timer:start(
+          500,
+          0,
+          vim.schedule_wrap(function()
+            if not timer:is_closing() then
+              timer:close()
+            end
+
+            for _, name in ipairs(client_names) do
+              vim.lsp.enable(name)
+            end
+          end)
+        )
+      end)
+
+      recreate_lsp_command('LspStop', function(info)
+        local client_names = configured_client_names(info.fargs)
+        if vim.tbl_isempty(client_names) then
+          return
+        end
+
+        for _, name in ipairs(client_names) do
+          vim.lsp.enable(name, false)
+          if info.bang then
+            vim.iter(vim.lsp.get_clients { name = name }):each(function(client)
+              client:stop(true)
+            end)
+          end
+        end
+      end)
     end,
   },
 
